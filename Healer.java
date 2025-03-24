@@ -1,5 +1,5 @@
 public class Healer extends User {
-    private int healingAbility; // Determines how much health they can restore
+    private int healingAbility; 
 
     public Healer(String name, double health, int sanity, int speed, int maxInventorySize, int healingAbility) {
         super(name, health, sanity, speed, maxInventorySize);

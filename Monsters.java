@@ -3,15 +3,16 @@ public class Monsters {
     private String description;
     private int threatlvl;
     private double health;
-    
     private int sanitydealer;
+    private int damagedealer;
 
-    public Monsters(String name, String description, int threatlvl, double health) {
+    public Monsters(String name, String description, int threatlvl, double health, int damagedealer, int sanitydealer) {
         this.name = name;
         this.description = description;
         this.threatlvl = threatlvl;
         this.health = health;
-        
+        this.damagedealer = damagedealer;
+        this.sanitydealer = sanitydealer;
         
     }
     public String getName() {

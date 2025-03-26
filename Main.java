@@ -11,8 +11,8 @@ public class Main {
         bob.addItemToInventory("food");
         System.out.println(bob.toString());
 
-        System.out.println("hi abhay");
+        System.out.println("hi ay");
 
-        
+        System.out.println("hi atishay");
     }
 }

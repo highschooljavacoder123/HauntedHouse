@@ -1,34 +1,42 @@
-public class room{
+public class Room {
     private String name; 
     private String description; 
     private int darknessLevel; 
-    private Monster
+    private Monster[] monsters; 
 
-    public room(String x, String y, int z){
-        name = x; 
-        description = y; 
-        darknessLevel = z; 
+    public Room(String name, String description, int darknessLevel, Monster[] monsters) {
+        this.name = name; 
+        this.description = description; 
+        this.darknessLevel = darknessLevel; 
+        this.monsters = monsters; 
     }
 
-    public String getname(){
+    public String getName() {
         return name; 
     }
-    public String getdescription(){
+
+    public String getDescription() {
         return description; 
     }
-    public int getdarknesslevel(){
+
+    public int getDarknessLevel() {
         return darknessLevel; 
     }
-    public void setName(String m){
-        name = atishay; 
 
-    }
-    public void setDescription(String jhxt){
-        description = abhay; 
-    }
-    public void setdarknesslevel(int p){
-        darknessLevel = p; 
+    public void setName(String name) {
+        this.name = name; 
     }
 
+    public void setDescription(String description) {
+        this.description = description; 
+    }
 
-}
+    public void setDarknessLevel(int darknessLevel) {
+        this.darknessLevel = darknessLevel; 
+    }
+
+    public Monster[] getMonsters() {
+        return monsters; 
+    }
+
+    public void setMon

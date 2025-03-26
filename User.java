@@ -72,19 +72,18 @@ public class User {
 
     @Override
     public String toString() {
-        StringBuilder inv = new StringBuilder("[");
-        for (int i = 0; i < inventorySize; i++) {
-            inv.append(inventory[i]);
-            if (i < inventorySize - 1) inv.append(", ");
+        String inventoryDisplay = "[";
+        for (int i = 0; i<inventorySize-1; i++){
+            inventoryDisplay+= inventory[i] +", ";
         }
-        inv.append("]");
+        inventoryDisplay+= inventory[inventorySize-1] +"]";
 
         return "User{" +
                 "name='" + name + '\'' +
                 ", health=" + health +
                 ", sanity=" + sanity +
                 ", speed=" + speed +
-                ", inventory=" + inv +
+                ", inventory=" + inventoryDisplay +
                 '}';
     }
 }

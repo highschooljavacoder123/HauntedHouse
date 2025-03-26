@@ -36,4 +36,7 @@ public class Attic extends Room {
         } else if (creakingLevel > 10) {
             this.creakingLevel = 10;
         } else {
-            this.creaking
+            this.creaking(); 
+        }
+    }
+}

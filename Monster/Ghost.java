@@ -1,8 +1,8 @@
 public class Ghost extends Monsters {
     private int hauntLevel;
 
-    public Ghost(String name, String description, int threatlvl, double health, int damagedealer, int sanitydealer, int hauntLevel) {
-        super(name, description, threatlvl, health, damagedealer, sanitydealer);
+    public Ghost(String name, String description, double health, int damagedealer, int sanitydealer, int hauntLevel) {
+        super(name, description, health, damagedealer, sanitydealer);
         this.hauntLevel = hauntLevel;
     }
 

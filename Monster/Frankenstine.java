@@ -1,8 +1,8 @@
 public class Frankenstine extends Monsters {
     private int electriccharge;
 
-    public Frankenstine(String name, String description, int threatlvl, double health, int damagedealer, int sanitydealer, int electriccharge) {
-        super(name, description, threatlvl, health, damagedealer, sanitydealer);
+    public Frankenstine(String name, String description, double health, int damagedealer, int sanitydealer, int electriccharge) {
+        super(name, description, health, damagedealer, sanitydealer);
         this.electriccharge = electriccharge;
 
     }

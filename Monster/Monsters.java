@@ -1,15 +1,15 @@
 public class Monsters {
     protected String name;
     protected String description;
-    protected int threatlvl;
+
     protected double health;
     protected int sanitydealer;
     protected int damagedealer;
 
-    public Monsters(String name, String description, int threatlvl, double health, int damagedealer, int sanitydealer) {
+    public Monsters(String name, String description, double health, int damagedealer, int sanitydealer) {
         this.name = name;
         this.description = description;
-        this.threatlvl = threatlvl;
+        
         this.health = health;
         this.damagedealer = damagedealer;
         this.sanitydealer = sanitydealer;
@@ -23,9 +23,7 @@ public class Monsters {
         return description;
     }
 
-    public int getThreatlvl() {
-        return threatlvl;
-    }
+   
 
     public double getHealth() {
         return health;
@@ -65,7 +63,7 @@ public class Monsters {
     
     @Override
     public String toString() {
-        return name + " - " + description + "\nThreat Level: " + threatlvl + " | Health: " + health;
+        return name + " - " + description +  " | Health: " + health;
     }
 
 }

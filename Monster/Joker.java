@@ -1,8 +1,8 @@
 public class Joker extends Monsters {
     private int trickLevel;
 
-    public Joker(String name, String description, int threatlvl, double health, int damagedealer, int sanitydealer, int trickLevel) {
-        super(name, description, threatlvl, health, damagedealer, sanitydealer);
+    public Joker(String name, String description, double health, int damagedealer, int sanitydealer, int trickLevel) {
+        super(name, description, health, damagedealer, sanitydealer);
         this.trickLevel = trickLevel;
     }
 

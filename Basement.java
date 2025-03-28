@@ -1,7 +1,7 @@
 public class Basement extends Room {
     private boolean hasHiddenPassage;
     private boolean hasFlickeringLights;
-    private int dampnessLevel; // 1 to 10, higher means more moisture and decay
+    private int dampnessLevel; 
 
     public Basement(String name, String description, int darknessLevel, Monster[] monsters, boolean hasHiddenPassage, boolean hasFlickeringLights, int dampnessLevel) {
         super(name, description, darknessLevel, monsters);
@@ -39,8 +39,6 @@ public class Basement extends Room {
             this.dampnessLevel = dampnessLevel;
         }
     }
-
-    // New Methods
 
     public void searchForHiddenPassage() {
         if (hasHiddenPassage) {

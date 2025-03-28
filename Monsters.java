@@ -1,10 +1,10 @@
 public class Monsters {
-    private String name;
-    private String description;
-    private int threatlvl;
-    private double health;
-    private int sanitydealer;
-    private int damagedealer;
+    protected String name;
+    protected String description;
+    protected int threatlvl;
+    protected double health;
+    protected int sanitydealer;
+    protected int damagedealer;
 
     public Monsters(String name, String description, int threatlvl, double health, int damagedealer, int sanitydealer) {
         this.name = name;
@@ -31,6 +31,13 @@ public class Monsters {
         return health;
     }
 
+    public int getDamagedealer(){
+        return damagedealer;
+    }
+    public int getSanitydealer(){
+        return sanitydealer;
+    }
+
     
 
     
@@ -55,7 +62,7 @@ public class Monsters {
         }
     }
 
-    // ToString Method
+    
     @Override
     public String toString() {
         return name + " - " + description + "\nThreat Level: " + threatlvl + " | Health: " + health;

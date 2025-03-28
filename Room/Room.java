@@ -2,9 +2,9 @@ public class Room {
     private String name; 
     private String description; 
     private int darknessLevel; 
-    private Monster[] monsters; 
+    private Monsters[] monsters; 
 
-    public Room(String name, String description, int darknessLevel, Monster[] monsters) {
+    public Room(String name, String description, int darknessLevel, Monsters[] monsters) {
         this.name = name; 
         this.description = description; 
         this.darknessLevel = darknessLevel; 
@@ -35,8 +35,8 @@ public class Room {
         this.darknessLevel = darknessLevel; 
     }
 
-    public Monster[] getMonsters() {
+    public Monsters[] getMonsters() {
         return monsters; 
     }
 
-    public void setMon
+}

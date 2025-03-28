@@ -3,7 +3,7 @@ public class Basement extends Room {
     private boolean hasFlickeringLights;
     private int dampnessLevel; 
 
-    public Basement(String name, String description, int darknessLevel, Monster[] monsters, boolean hasHiddenPassage, boolean hasFlickeringLights, int dampnessLevel) {
+    public Basement(String name, String description, int darknessLevel, Monsters[] monsters, boolean hasHiddenPassage, boolean hasFlickeringLights, int dampnessLevel) {
         super(name, description, darknessLevel, monsters);
         this.hasHiddenPassage = hasHiddenPassage;
         this.hasFlickeringLights = hasFlickeringLights;

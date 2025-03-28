@@ -3,7 +3,7 @@ public class Attic extends Room {
     private boolean isHaunted;
     private int creakingLevel; 
 
-    public Attic(String name, String description, int darknessLevel, Monster[] monsters, boolean hasCobwebs, boolean isHaunted, int creakingLevel) {
+    public Attic(String name, String description, int darknessLevel, Monsters[] monsters, boolean hasCobwebs, boolean isHaunted, int creakingLevel) {
         super(name, description, darknessLevel, monsters);
         this.hasCobwebs = hasCobwebs;
         this.isHaunted = isHaunted;
@@ -30,13 +30,13 @@ public class Attic extends Room {
         return creakingLevel;
     }
 
-    public void setCreakingLevel(int creakingLevel) {
-        if (creakingLevel < 1) {
-            this.creakingLevel = 1;
-        } else if (creakingLevel > 10) {
-            this.creakingLevel = 10;
-        } else {
-            this.creaking(); 
-        }
-    }
+    // public void setCreakingLevel(int creakingLevel) {
+    //     if (creakingLevel < 1) {
+    //         this.creakingLevel = 1;
+    //     } else if (creakingLevel > 10) {
+    //         this.creakingLevel = 10;
+    //     } else {
+    //         this.creaking(); 
+    //     }
+    // }
 }

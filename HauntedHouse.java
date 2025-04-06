@@ -1,8 +1,7 @@
-// import java.util.ArrayList; 
+public class HauntedHouse {
+    private String map;
 
-// public class HauntedHouse {
-//     private Rooms[][] map = new Rooms[2][3];
-//     public HauntedHouse(Rooms[][] createdmap) {
-//         map = createdmap;
-//     }
-// }
+    public Haunted House(){
+        
+    }
+}

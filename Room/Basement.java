@@ -1,22 +1,16 @@
 public class Basement extends Room {
-    private boolean hasHiddenPassage;
     private boolean hasFlickeringLights;
     private int dampnessLevel; 
 
-    public Basement(String name, String description, int darknessLevel, Monsters[] monsters, boolean hasHiddenPassage, boolean hasFlickeringLights, int dampnessLevel) {
+    public Basement(String name, String description, int darknessLevel, Monsters[] monsters, boolean hasFlickeringLights, int dampnessLevel) {
         super(name, description, darknessLevel, monsters);
-        this.hasHiddenPassage = hasHiddenPassage;
+        
         this.hasFlickeringLights = hasFlickeringLights;
         this.dampnessLevel = dampnessLevel;
     }
 
-    public boolean hasHiddenPassage() {
-        return hasHiddenPassage;
-    }
+   
 
-    public void setHiddenPassage(boolean hasHiddenPassage) {
-        this.hasHiddenPassage = hasHiddenPassage;
-    }
 
     public boolean hasFlickeringLights() {
         return hasFlickeringLights;
@@ -40,13 +34,7 @@ public class Basement extends Room {
         }
     }
 
-    public void searchForHiddenPassage() {
-        if (hasHiddenPassage) {
-            System.out.println("You run your hands along the wall... A section suddenly shifts! A hidden passage has been revealed.");
-        } else {
-            System.out.println("You search the walls, but find nothing unusual.");
-        }
-    }
+  
 
     public void fixLights() {
         if (hasFlickeringLights) {

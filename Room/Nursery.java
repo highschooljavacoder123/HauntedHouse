@@ -3,7 +3,7 @@ public class Nursery extends Room {
     private boolean hasRockingChair;
     private int toyScatteringLevel; 
 
-    public Nursery(String name, String description, int darknessLevel, Monsters[] monsters, boolean hasLullabyMusic, boolean hasRockingChair, int toyScatteringLevel) {
+    public Nursery(String name, String description, int darknessLevel, Monsters monsters, boolean hasLullabyMusic, boolean hasRockingChair, int toyScatteringLevel) {
         super(name, description, darknessLevel, monsters);
         this.hasLullabyMusic = hasLullabyMusic;
         this.hasRockingChair = hasRockingChair;

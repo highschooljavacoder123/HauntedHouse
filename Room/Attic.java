@@ -3,7 +3,7 @@ public class Attic extends Room {
     private boolean isHaunted;
     private int creakingLevel; 
 
-    public Attic(String name, String description, int darknessLevel, Monsters[] monsters, boolean hasCobwebs, boolean isHaunted, int creakingLevel) {
+    public Attic(String name, String description, int darknessLevel, Monsters monsters, boolean hasCobwebs, boolean isHaunted, int creakingLevel) {
         super(name, description, darknessLevel, monsters);
         this.hasCobwebs = hasCobwebs;
         this.isHaunted = isHaunted;

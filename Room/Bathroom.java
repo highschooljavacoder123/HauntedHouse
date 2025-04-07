@@ -2,7 +2,7 @@ public class Bathroom extends Room {
     private boolean hasFoggyMirror;
     private int waterLeakLevel;
 
-    public Bathroom(String name, String description, int darknessLevel, Monsters[] monsters, boolean hasFoggyMirror, int waterLeakLevel) {
+    public Bathroom(String name, String description, int darknessLevel, Monsters monsters, boolean hasFoggyMirror, int waterLeakLevel) {
         super(name, description, darknessLevel, monsters);
         this.hasFoggyMirror = hasFoggyMirror;
         this.waterLeakLevel = waterLeakLevel;

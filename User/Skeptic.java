@@ -17,4 +17,9 @@ public class Skeptic extends User {
     public void resistFear() {
         System.out.println(getName() + " is resisting fear with resistance level " + resistance);
     }
+
+    @Override
+    public String getRole() {
+        return "Skeptic";
+    }
 }

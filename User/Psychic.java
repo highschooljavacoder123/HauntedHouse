@@ -21,4 +21,9 @@ public class Psychic extends User {
     public void calmGhost(String ghostName) {
         System.out.println(getName() + " attempts to calm " + ghostName + " with psychic energy.");
     }
+
+    @Override
+    public String getRole(){
+        return "Psychic";
+    }
 }

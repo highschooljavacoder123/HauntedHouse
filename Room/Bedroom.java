@@ -2,7 +2,7 @@ public class Bedroom extends Room {
     private boolean bedUnmade;
     private boolean hasCloset;
 
-    public Bedroom(String name, String description, int darknessLevel, Monsters[] monsters, boolean bedUnmade, boolean hasCloset) {
+    public Bedroom(String name, String description, int darknessLevel, Monsters monsters, boolean bedUnmade, boolean hasCloset) {
         super(name, description, darknessLevel, monsters);
         this.bedUnmade = bedUnmade;
         this.hasCloset = hasCloset;

@@ -18,4 +18,9 @@ public class Healer extends User {
         System.out.println(getName() + " is healing " + target.getName() + " by " + healingAbility + " points.");
         target.setHealth(target.getHealth() + healingAbility);
     }
+
+    @Override
+    public String getRole(){
+        return "Healer";
+    }
 }

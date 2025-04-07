@@ -1,17 +1,17 @@
 public class Ghost extends Monsters {
-    private int hauntLevel;
+    private boolean detectible;
 
-    public Ghost(String name, String description, double health, int damagedealer, int sanitydealer, int hauntLevel) {
+    public Ghost(String name, String description, double health, int damagedealer, int sanitydealer, boolean detectible) {
         super(name, description, health, damagedealer, sanitydealer);
-        this.hauntLevel = hauntLevel;
+        this.detectible = detectible;
     }
 
-    public int getHauntLevel() {
-        return hauntLevel;
+    public boolean isDetectible() {
+        return detectible;
     }
 
-    public void setHauntLevel(int hauntLevel) {
-        this.hauntLevel = hauntLevel;
+    public void setDetectible(boolean detectible) {
+        this.detectible = detectible;
     }
 
     @Override
@@ -25,6 +25,6 @@ public class Ghost extends Monsters {
 
     @Override
     public String toString() {
-        return super.toString() + " | Haunt Level: " + hauntLevel;
+        return super.toString() + " | Detectible: " + detectible;
     }
 }

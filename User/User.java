@@ -70,6 +70,10 @@ public class User {
         System.out.println("Item not found in inventory!");
     }
 
+    public String getRole(){
+        return "";
+    }
+
     @Override
     public String toString() {
         String inventoryDisplay = "[";

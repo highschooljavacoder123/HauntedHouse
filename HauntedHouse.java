@@ -6,42 +6,57 @@ public class HauntedHouse {
     }
 
     private void setupMap() {
+        Monsters inAttic = new Ghost("Ghost", "A mysterious white haunted cloth thats floating around", 25.0, 10, 20, false);
+
+        Monsters inBathroom = new Bats("Blood Thirsty Bats", "A group of bats on the ceiling", 1.0, 5, 0);
+
+        Monsters inBedroom= new Dracula("Dracula", "A scary vampire", 50.0, 0, 10);
+
+        Monsters inNursery = new Doll("Toy doll", "An odd looking toy doll", 1.0, 0, 15);
+
+        Monsters inKitchen = new Wazoski("Mike fricken Wazoski", "A green ball looking thing with one eye",1.0, 0, -10);
+
+        Monsters inLivingroom = new Joker("The Joker", "A crazy clown looking dude", 50.0, 25, 25, 2);
+
+        Monsters inBasement = new Frankenstine("Frankenstine", "A big electrified monster", 100.0, 40, 0, 5);
+
+        
         map = new Room[3][3];
 
-        map[0][0] = new Attic("Creaky Attic","Dust dances in shafts of light piercing through broken boards.",7,new Monsters[]{},true,  true,  9);
+        map[0][0] = new Attic("Creaky Attic","Dust dances in shafts of light piercing through broken boards.",7,inAttic,true,  true,  9);
 
-        map[0][1] = new Bedroom("Old Bedroom","A canopy bed covered in moldy drapes dominates the room.",5,new Monsters[]{},true,false);
+        map[0][1] = new Bedroom("Old Bedroom","A canopy bed covered in moldy drapes dominates the room.",5,inBedroom,true,false);
 
-        map[0][2] = new Nursery("Ghostly Nursery","Faded wallpaper peels behind a dusty crib and scattered toys.",6,new Monsters[]{},true,true,8);
+        map[0][2] = new Nursery("Ghostly Nursery","Faded wallpaper peels behind a dusty crib and scattered toys.",6,inNursery,true,true,8);
 
         map[1][2] = new Bathroom(
             "Dripping Bathroom",
             "The mirror is fogged despite the cold air. Water drips rhythmically.",
             4,
-            new Monsters[]{},
-            true,   // hasFoggyMirror
-            7       // waterLeakLevel
+            inBathroom,
+            true,  
+            7       
         );
 
         map[1][0] = new LivingRoom(
             "Disturbed Living Room",
             "Furniture is overturned, and the TV flickers static on repeat.",
             5,
-            new Monsters[]{},
-            true,   // hasTV
-            true    // furnitureMoved
+            inLivingroom,
+            true,   
+            true   
         );
 
         map[1][1] = new Kitchen(
             "Greasy Kitchen",
             "Everything is coated in a layer of grime, knives lay scattered.",
             6,
-            new Monsters[]{},
-            true,   // hasSharpObjects
-            8       // greaseLevel
+            inKitchen,
+            true,  
+            8       
         );
 
-        map[2][0] = new Basement("Dark Basement","Wet stone walls and flickering lights create a foreboding atmosphere.",9,new Monsters[]{},true, 10);
+        map[2][0] = new Basement("Dark Basement","Wet stone walls and flickering lights create a foreboding atmosphere.",9,inBasement,true, 10);
 
         
         map[2][1] = null;

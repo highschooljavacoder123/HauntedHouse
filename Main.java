@@ -43,7 +43,12 @@ public class Main {
 
         }
 
+        HauntedHouse hauntedhouse = new HauntedHouse();
+        hauntedhouse.printMapLayout();
+
+
         thegame.close();
+
 
 
     

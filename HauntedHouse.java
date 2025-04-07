@@ -14,7 +14,7 @@ public class HauntedHouse {
 
         map[0][2] = new Nursery("Ghostly Nursery","Faded wallpaper peels behind a dusty crib and scattered toys.",6,new Monsters[]{},true,true,8);
 
-        map[1][0] = new Bathroom(
+        map[1][2] = new Bathroom(
             "Dripping Bathroom",
             "The mirror is fogged despite the cold air. Water drips rhythmically.",
             4,
@@ -23,7 +23,7 @@ public class HauntedHouse {
             7       // waterLeakLevel
         );
 
-        map[1][1] = new LivingRoom(
+        map[1][0] = new LivingRoom(
             "Disturbed Living Room",
             "Furniture is overturned, and the TV flickers static on repeat.",
             5,
@@ -32,7 +32,7 @@ public class HauntedHouse {
             true    // furnitureMoved
         );
 
-        map[1][2] = new Kitchen(
+        map[1][1] = new Kitchen(
             "Greasy Kitchen",
             "Everything is coated in a layer of grime, knives lay scattered.",
             6,
@@ -55,16 +55,27 @@ public class HauntedHouse {
         return map[row][col];
     }
 
+    public Room[][] getMap() {
+        return map;
+    }
+
+
     public void printMapLayout() {
+        int cellWidth = 25; // Width of each cell including brackets
+    
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[0].length; j++) {
+                String content;
                 if (map[i][j] != null) {
-                    System.out.print("[" + map[i][j].getName() + "] ");
+                    content = "[" + map[i][j].getName() + "]";
                 } else {
-                    System.out.print("[Empty] ");
+                    content = "[Empty]";
                 }
+    
+                // Make sure each cell is exactly `cellWidth` characters wide
+                System.out.print(String.format("%-" + cellWidth + "s", content));
             }
-            System.out.println();
+            System.out.println(); // New line after each row
         }
     }
 }

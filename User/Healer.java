@@ -1,8 +1,8 @@
 public class Healer extends User {
     private int healingAbility; 
 
-    public Healer(String name, double health, int sanity, int speed, int maxInventorySize, int healingAbility) {
-        super(name, health, sanity, speed, maxInventorySize);
+    public Healer(String name, double health, int sanity, int attack, int maxInventorySize, int healingAbility) {
+        super(name, health, sanity, attack, maxInventorySize);
         this.healingAbility = healingAbility;
     }
 

@@ -1,8 +1,8 @@
 public class Skeptic extends User {
     private int resistance;
 
-    public Skeptic(String name, double health, int sanity, int speed, int maxInventorySize, int resistance) {
-        super(name, health, sanity, speed, maxInventorySize);
+    public Skeptic(String name, double health, int sanity, int attack, int maxInventorySize, int resistance) {
+        super(name, health, sanity, attack, maxInventorySize);
         this.resistance = resistance;
     }
 

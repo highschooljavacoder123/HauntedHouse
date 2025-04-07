@@ -1,8 +1,8 @@
 public class Psychic extends User {
     private int psychicPower; 
 
-    public Psychic(String name, double health, int sanity, int speed, int maxInventorySize, int psychicPower) {
-        super(name, health, sanity, speed, maxInventorySize);
+    public Psychic(String name, double health, int sanity, int attack, int maxInventorySize, int psychicPower) {
+        super(name, health, sanity, attack, maxInventorySize);
         this.psychicPower = psychicPower;
     }
 

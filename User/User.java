@@ -2,15 +2,15 @@ public class User {
     private String name;
     private double health;
     private int sanity;
-    private int speed;
+    private int attack;
     private String[] inventory;
     private int inventorySize; 
 
-    public User(String name, double health, int sanity, int speed, int maxInventorySize) {
+    public User(String name, double health, int sanity, int attack, int maxInventorySize) {
         this.name = name;
         this.health = health;
         this.sanity = sanity;
-        this.speed = speed;
+        this.attack = attack;
         this.inventory = new String[maxInventorySize]; 
         this.inventorySize = 0;
     }
@@ -35,12 +35,12 @@ public class User {
         this.sanity = sanity;
     }
 
-    public int getSpeed() {
-        return speed;
+    public int getAttack() {
+        return attack;
     }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
+    public void setAttack(int attack) {
+        this.attack = attack;
     }
 
     public String[] getInventory() {
@@ -82,7 +82,7 @@ public class User {
                 "name='" + name + '\'' +
                 ", health=" + health +
                 ", sanity=" + sanity +
-                ", speed=" + speed +
+                ", attack=" + attack +
                 ", inventory=" + inventoryDisplay +
                 '}';
     }

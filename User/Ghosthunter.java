@@ -2,10 +2,9 @@ public class Ghosthunter extends User {
     private int ghostDetectionLevel;
     private int attackPower;
 
-    public Ghosthunter(String name, double health, int sanity, int speed, int maxInventorySize, int ghostDetectionLevel, int attackPower) {
-        super(name, health, sanity, speed, maxInventorySize);
+    public Ghosthunter(String name, double health, int sanity, int attack, int maxInventorySize, int ghostDetectionLevel) {
+        super(name, health, sanity, attack, maxInventorySize);
         this.ghostDetectionLevel = ghostDetectionLevel;
-        this.attackPower = attackPower;
     }
 
     public int getGhostDetectionLevel() {

@@ -2,8 +2,8 @@ public class Kitchen extends Room {
     private boolean hasSharpObjects;
     private int greaseLevel;
 
-    public Kitchen(String name, String description, int darknessLevel, Monsters monsters, boolean hasSharpObjects, int greaseLevel) {
-        super(name, description, darknessLevel, monsters);
+    public Kitchen(String name, String description, int darknessLevel, Monsters monsters, Inventory[] loot, boolean hasSharpObjects, int greaseLevel) {
+        super(name, description, darknessLevel, monsters, loot);
         this.hasSharpObjects = hasSharpObjects;
         this.greaseLevel = greaseLevel;
     }

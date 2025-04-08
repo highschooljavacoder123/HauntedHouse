@@ -2,7 +2,7 @@ public class Weapons extends Inventory {
     private int damage;
     private String combatType; 
 
-    public Weapons(String name, String description, int rarity, int damage, String combatType) {
+    public Weapons(String name, String description, String rarity, int damage, String combatType) {
         super(name, description, rarity);
         this.damage = damage;
         this.combatType = combatType;

@@ -2,7 +2,7 @@ public class Consumables extends Inventory{
     private int usesRemaining; 
     private boolean isCursed; 
     
-    public Consumables(String name, String description, int rarity, int usesRemaining, boolean isCursed){
+    public Consumables(String name, String description, String rarity, int usesRemaining, boolean isCursed){
         super(name, description, rarity); 
         this.usesRemaining = usesRemaining; 
         this.isCursed = isCursed; 
@@ -34,7 +34,8 @@ public class Consumables extends Inventory{
             if (isCursed) {
                 System.out.println("A dark energy lingers around you... Was this a mistake?");
             }
-        } else {
+        } 
+        else {
             System.out.println("The " + getName() + " has been fully consumed and can no longer be used.");
         }
     }

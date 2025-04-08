@@ -1,8 +1,8 @@
 public class Inventory{
     private String name;
     private String description;
-    private int rarity;
-    public Inventory(String name, String description, int rarity){
+    private String rarity;
+    public Inventory(String name, String description, String rarity){
         this.name = name;
         this.description = description;
         this.rarity = rarity;
@@ -13,7 +13,7 @@ public class Inventory{
     public String getDescription(){
         return description;
     }
-    public int getRarity(){
+    public String getRarity(){
         return rarity;
     }
 }

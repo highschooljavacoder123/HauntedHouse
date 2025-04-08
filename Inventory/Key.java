@@ -2,7 +2,7 @@ public class Key extends Inventory {
     private String roomUnlock;
     private boolean isUsed;
 
-    public Key(String name, String description, int rarity, String roomUnlock) {
+    public Key(String name, String description, String rarity, String roomUnlock) {
         super(name, description, rarity);
         this.roomUnlock = roomUnlock;
         this.isUsed = false;

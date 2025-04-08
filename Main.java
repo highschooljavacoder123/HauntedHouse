@@ -59,7 +59,9 @@ public class Main {
         while (!loss) {
             hauntedhouse.printMapLayout();
             System.out.println("You are currently at the "+ hauntedhouse.getRoom(playerRow, playerCol).getName());
-            
+
+            System.out.println(hauntedhouse.getRoom(playerRow,playerCol).displayInventory());
+
             loss = true;
         }
         

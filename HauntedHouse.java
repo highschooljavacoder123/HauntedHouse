@@ -20,43 +20,83 @@ public class HauntedHouse {
 
         Monsters inBasement = new Frankenstine("Frankenstine", "A big electrified monster", 100.0, 40, 0, 5);
 
+        Key unlockAttic = new Key("Attic Key", "This unlocks the attic", "Legendary", "attic");
+
+        Key unlockBasement = new Key("Basement Key", "This unlocks the basement", "Legendary", "basement");
+
+        Key unlockBedroom = new Key("Bedroom Key", "This unlocks the bedroom", "Legendary", "bedroom");
+
+        Key unlockNursery = new Key("Nursery Key", "This unlocks the nursery", "Mythic", "nursery");
+
+        Weapons ghostHunterGun = new Weapons("Ghost Hunter Gun","A specialized firearm used for banishing ghosts.","Rare",30,"Ranged");
+        
+        Weapons knife = new Weapons("Standard Knife","A basic knife. Not fancy, but it gets the job done.","Common",10,"Melee");
+
+        Weapons pitchfork = new Weapons("Pitchfork","An old farming tool, repurposed for defense.","Uncommon",20,"Melee");
+
+        Consumables healingPotion = new Consumables("Healing Potion","A glowing red potion that restores health when consumed.","Common",1,false);
+
+        Consumables positivityPotion = new Consumables("Positivity Potion","A potion that makes you more optimistic? It will increase your sanity.","Uncommon",2,false);
+
+        Consumables myseriousPotion = new Consumables("A potion?","A glass bottle with no label on it.","Rare",1,true);
+
+        Inventory trophy = new Inventory("Trophy", "An award given to those who beat the haunted house", "One in a billion");
+        
+        Inventory[] atticInventories = {unlockBedroom};
+
+        Inventory[] bedroomInventories = {unlockNursery, healingPotion};
+
+        Inventory[] nurseryInventories = {unlockBasement, pitchfork};
+
+        Inventory[] kitchenInventories = {knife, myseriousPotion};
+
+        Inventory[] livingroomInventories = {positivityPotion};
+
+        Inventory[] bathroomInventories = {unlockAttic, ghostHunterGun}; 
+
+        Inventory[] basementInventories = {trophy};
+
+
         
         map = new Room[3][3];
 
-        map[0][0] = new Attic("Creaky Attic","Dust dances in shafts of light piercing through broken boards.",7,inAttic,true,  true,  9);
+        map[0][0] = new Attic("Creaky Attic","Dust dances in shafts of light piercing through broken boards.",7,inAttic, atticInventories, true,  true,  9);
 
-        map[0][1] = new Bedroom("Old Bedroom","A canopy bed covered in moldy drapes dominates the room.",5,inBedroom,true,false);
+        map[0][1] = new Bedroom("Old Bedroom","A canopy bed covered in moldy drapes dominates the room.",5,inBedroom, bedroomInventories, true,false);
 
-        map[0][2] = new Nursery("Ghostly Nursery","Faded wallpaper peels behind a dusty crib and scattered toys.",6,inNursery,true,true,8);
+        map[0][2] = new Nursery("Ghostly Nursery","Faded wallpaper peels behind a dusty crib and scattered toys.",6,inNursery, nurseryInventories, true,true,8);
 
         map[1][2] = new Bathroom(
             "Dripping Bathroom",
             "The mirror is fogged despite the cold air. Water drips rhythmically.",
             4,
             inBathroom,
+            bathroomInventories,
             true,  
             7       
         );
 
-        map[1][0] = new LivingRoom(
+        map[1][1] = new LivingRoom(
             "Disturbed Living Room",
             "Furniture is overturned, and the TV flickers static on repeat.",
             5,
             inLivingroom,
+            livingroomInventories,
             true,   
             true   
         );
 
-        map[1][1] = new Kitchen(
+        map[1][0] = new Kitchen(
             "Greasy Kitchen",
             "Everything is coated in a layer of grime, knives lay scattered.",
             6,
             inKitchen,
+            kitchenInventories,
             true,  
             8       
         );
 
-        map[2][0] = new Basement("Dark Basement","Wet stone walls and flickering lights create a foreboding atmosphere.",9,inBasement,true, 10);
+        map[2][0] = new Basement("Dark Basement","Wet stone walls and flickering lights create a foreboding atmosphere.",9,inBasement,basementInventories,true, 10);
 
         
         map[2][1] = null;

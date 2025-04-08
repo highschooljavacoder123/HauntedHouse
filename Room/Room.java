@@ -48,9 +48,9 @@ public class Room {
     public String displayInventory() {
         String output = "[";
         for (int i = 0; i<loot.length-1; i++) {
-            output += loot[i].getName() + ", ";
+            output += i+": "+loot[i].getName() + ", ";
         }
-        return output+loot[loot.length-1].getName() +"]";
+        return output + (loot.length-1)+ ": "+loot[loot.length-1].getName() +"]";
 
     }
 

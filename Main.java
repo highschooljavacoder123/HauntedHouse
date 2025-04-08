@@ -60,7 +60,58 @@ public class Main {
             hauntedhouse.printMapLayout();
             System.out.println("You are currently at the "+ hauntedhouse.getRoom(playerRow, playerCol).getName());
 
-            System.out.println(hauntedhouse.getRoom(playerRow,playerCol).displayInventory());
+            System.out.println("Suddenly, a monster appears! It looks odd, what is that?");
+            try {
+                Thread.sleep(4000); 
+            } 
+            catch (InterruptedException e) {
+                e.printStackTrace(); 
+            }
+
+            hauntedhouse.getRoom(playerRow,playerCol).getMonsters().attack();
+
+            
+            boolean first = true;
+            while (first) {
+                System.out.println("Do you want to search the room for tools? \n1: Yes \n2: No");
+                Integer interaction = thegame.nextInt();
+                if (interaction == 1) {
+                    System.out.println("You found some items in the room:"+ hauntedhouse.getRoom(playerRow,playerCol).displayInventory());
+                    
+                    
+                    boolean second = true;
+                    while (second) {
+                        System.out.println("Do you want to pick any of these items up? \n1: Yes \n2: No");
+                        Integer pickup1 = thegame.nextInt();
+                        if  (pickup1 == 1) {
+                            second = false;
+                        }
+                        else if (pickup1 == 2){
+                            second = false;
+
+                        }
+                        else {
+                            System.out.println("Invalid input");
+                        }
+                    }
+
+
+
+                    first = false;
+                }
+                else if (interaction == 2) {
+                    first = false;
+                }
+                else {
+                    System.out.println("Invalid input");
+                }
+            }
+
+            
+
+            
+
+
 
             loss = true;
         }

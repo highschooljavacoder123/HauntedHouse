@@ -8,6 +8,7 @@ public class Room {
     private ArrayList<Inventory> loot;  // changed from Inventory[] to ArrayList
     private boolean isLocked = false;
     private String requiredKeyName = "";
+    private boolean isMonsterDefeated;
 
 
     public Room(String name, String description, int darknessLevel, Monsters monsters, ArrayList<Inventory> loot) {
@@ -16,6 +17,7 @@ public class Room {
         this.darknessLevel = darknessLevel; 
         this.monsters = monsters; 
         this.loot = loot;
+        this.isMonsterDefeated = false;
     }
 
     public String getName() {
@@ -47,12 +49,20 @@ public class Room {
         return requiredKeyName;
     }
 
+    public boolean isMonsterDefeated(){
+        return this.isMonsterDefeated;
+    }
+
     public void setDescription(String description) {
         this.description = description; 
     }
 
     public void setDarknessLevel(int darknessLevel) {
         this.darknessLevel = darknessLevel; 
+    }
+
+    public void setMonsterDefeated() {
+        this.isMonsterDefeated = true;
     }
 
     public Monsters getMonsters() {
@@ -88,4 +98,6 @@ public class Room {
     public void clearInventory() {
         this.loot.clear();
     }
+
+    
 }

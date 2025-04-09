@@ -45,25 +45,55 @@ public class Main {
             hauntedhouse.printMapLayout();
             System.out.println("You are currently at the " + hauntedhouse.getRoom(playerRow, playerCol).getName());
 
-            System.out.println("Suddenly, a monster appears! It looks odd, what is that?");
-            hauntedhouse.getRoom(playerRow, playerCol).getMonsters().attack();
+            if (hauntedhouse.getRoom(playerRow,playerCol).getName().equals("Greasy Kitchen")) {
+                if (!hauntedhouse.getRoom(playerRow,playerCol).isMonsterDefeated()) {
+                    System.out.println("Suddenly, a monster appears! It looks odd, what is that?");
+                    hauntedhouse.getRoom(playerRow, playerCol).getMonsters().attack();
 
-            
-            System.out.println("You found some items in the room:" + hauntedhouse.getRoom(playerRow, playerCol).displayInventory());
-            System.out.println();
-            System.out.println("You pick them up");
+                    player.setHealth(player.getHealth()-hauntedhouse.getRoom(playerRow,playerCol).getMonsters().getDamagedealer());
+                    player.setSanity(player.getSanity()-hauntedhouse.getRoom(playerRow, playerCol).getMonsters().getSanitydealer());
 
-            
-            
+                    System.out.println(player);
 
-                
-            for (int i = 0; i < 2; i++) {
-                Inventory original = hauntedhouse.getRoom(playerRow, playerCol).getSpecificInventory(i);
-                Inventory copy = copyInventoryItem(original);
-                player.addItemToInventory(copy);
+                    
+                    System.out.println("You found some items in the room:" + hauntedhouse.getRoom(playerRow, playerCol).displayInventory());
+                    System.out.println();
+                    System.out.println("You pick them up");
+
+                        
+                    for (int i = 0; i < 2; i++) {
+                        Inventory original = hauntedhouse.getRoom(playerRow, playerCol).getSpecificInventory(i);
+                        Inventory copy = copyInventoryItem(original);
+                        player.addItemToInventory(copy);
+                    }
+                    hauntedhouse.getRoom(playerRow, playerCol).clearInventory();
+                    player.printInventory();
+
+                    hauntedhouse.getRoom(playerRow,playerCol).setMonsterDefeated();
+
+                }
             }
-            hauntedhouse.getRoom(playerRow, playerCol).clearInventory();
-            player.printInventory();
+
+            if (hauntedhouse.getRoom(playerRow, playerCol).getName().equals("Disturbed Living Room")) {
+                System.out.println("The TV flickers with static and strange whispers.");
+                if (!hauntedhouse.getRoom(playerRow, playerCol).isMonsterDefeated()) {
+                    System.out.println("The Joker lunges from behind the couch with a cackle!");
+                    hauntedhouse.getRoom(playerRow, playerCol).getMonsters().attack();
+                    hauntedhouse.getRoom(playerRow, playerCol).setMonsterDefeated();
+            
+                    System.out.println("You found some items in the room: " + hauntedhouse.getRoom(playerRow, playerCol).displayInventory());
+                    for (int i = 0; i < hauntedhouse.getRoom(playerRow, playerCol).getInventory().size(); i++) {
+                        Inventory original = hauntedhouse.getRoom(playerRow, playerCol).getSpecificInventory(i);
+                        Inventory copy = copyInventoryItem(original);
+                        player.addItemToInventory(copy);
+                    }
+                    hauntedhouse.getRoom(playerRow, playerCol).clearInventory();
+                    player.printInventory();
+                }
+            
+                
+            }
+            
                     
             
                     
@@ -86,9 +116,10 @@ public class Main {
                 }
             }
             
-            loss = true;
-            thegame.close();
+            
+            
         }
+        thegame.close();
     }
         
     

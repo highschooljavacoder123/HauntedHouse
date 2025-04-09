@@ -48,60 +48,50 @@ public class Main {
             System.out.println("Suddenly, a monster appears! It looks odd, what is that?");
             hauntedhouse.getRoom(playerRow, playerCol).getMonsters().attack();
 
-            boolean first = true;
-            while (first) {
-                System.out.println("You found some items in the room:" + hauntedhouse.getRoom(playerRow, playerCol).displayInventory());
+            
+            System.out.println("You found some items in the room:" + hauntedhouse.getRoom(playerRow, playerCol).displayInventory());
+            System.out.println();
+            System.out.println("You pick them up");
 
-                boolean second = true;
-                while (second) {
-                    System.out.println("Which item(s) do you want to pick up? \n0: Standard Knife \n1: A potion? \n2: Both \n3: Neither");
-                    int pickup1 = thegame.nextInt();
+            
+            
 
-                    if (pickup1 == 0 || pickup1 == 1) {
-                        Inventory original = hauntedhouse.getRoom(playerRow, playerCol).getSpecificInventory(pickup1);
-                        Inventory copy = copyInventoryItem(original);
-                        player.addItemToInventory(copy);
-                        hauntedhouse.getRoom(playerRow, playerCol).deleteSpecificInventory(pickup1);
-                        player.printInventory();
-                    } else if (pickup1 == 2) {
-                        for (int i = 0; i < 2; i++) {
-                            Inventory original = hauntedhouse.getRoom(playerRow, playerCol).getSpecificInventory(i);
-                            Inventory copy = copyInventoryItem(original);
-                            player.addItemToInventory(copy);
-                        }
-                        hauntedhouse.getRoom(playerRow, playerCol).clearInventory();
-                        player.printInventory();
-                    } else if (pickup1 == 3) {
-                        System.out.println("You chose not to pick up anything.");
-                    } else {
-                        System.out.println("Invalid input");
-                        continue;
-                    }
-                    second = false;
-                }
-                boolean moved = false;
-                thegame.nextLine(); // clear leftover newline if needed
+                
+            for (int i = 0; i < 2; i++) {
+                Inventory original = hauntedhouse.getRoom(playerRow, playerCol).getSpecificInventory(i);
+                Inventory copy = copyInventoryItem(original);
+                player.addItemToInventory(copy);
+            }
+            hauntedhouse.getRoom(playerRow, playerCol).clearInventory();
+            player.printInventory();
+                    
+            
+                    
+                
+            boolean moved = false;
+            System.out.println();
 
-                while (!moved) {
-                    System.out.println("Which direction would you like to move? (up/down/left/right)");
-                    String direction = thegame.nextLine();
-                    int[] newPos = player.move(direction, playerRow, playerCol, hauntedhouse.getMap());
+            while (!moved) {
+                System.out.println("Which direction would you like to move? (up/down/left/right)");
+                String direction = thegame.nextLine();
+                int[] newPos = player.move(direction, playerRow, playerCol, hauntedhouse.getMap());
 
-                    // Only update if the player actually moved
-                    if (newPos[0] != playerRow || newPos[1] != playerCol) {
-                        playerRow = newPos[0];
-                        playerCol = newPos[1];
-                        moved = true;
-                    } else {
-                        System.out.println("You remain in the same room. Try a different direction.");
-                    }
+                // Only update if the player actually moved
+                if (newPos[0] != playerRow || newPos[1] != playerCol) {
+                    playerRow = newPos[0];
+                    playerCol = newPos[1];
+                    moved = true;
+                } else {
+                    System.out.println("You remain in the same room. Try a different direction.");
                 }
             }
+            
             loss = true;
+            thegame.close();
         }
-
-        thegame.close();
     }
+        
+    
 
     private static Inventory copyInventoryItem(Inventory original) {
         if (original instanceof Weapons) {

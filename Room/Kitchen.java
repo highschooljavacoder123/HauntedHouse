@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 public class Kitchen extends Room {
     private boolean hasSharpObjects;
     private int greaseLevel;
 
-    public Kitchen(String name, String description, int darknessLevel, Monsters monsters, Inventory[] loot, boolean hasSharpObjects, int greaseLevel) {
+    public Kitchen(String name, String description, int darknessLevel, Monsters monsters, ArrayList<Inventory> loot, boolean hasSharpObjects, int greaseLevel) {
         super(name, description, darknessLevel, monsters, loot);
         this.hasSharpObjects = hasSharpObjects;
         this.greaseLevel = greaseLevel;

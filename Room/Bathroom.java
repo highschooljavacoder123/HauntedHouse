@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 public class Bathroom extends Room {
     private boolean hasFoggyMirror;
     private int waterLeakLevel;
 
-    public Bathroom(String name, String description, int darknessLevel, Monsters monsters, Inventory[] loot, boolean hasFoggyMirror, int waterLeakLevel) {
+    public Bathroom(String name, String description, int darknessLevel, Monsters monsters, ArrayList<Inventory> loot, boolean hasFoggyMirror, int waterLeakLevel) {
         super(name, description, darknessLevel, monsters, loot);
         this.hasFoggyMirror = hasFoggyMirror;
         this.waterLeakLevel = waterLeakLevel;

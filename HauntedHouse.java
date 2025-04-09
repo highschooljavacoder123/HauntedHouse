@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class HauntedHouse {
     private Room[][] map;
 
@@ -34,27 +36,38 @@ public class HauntedHouse {
 
         Weapons pitchfork = new Weapons("Pitchfork","An old farming tool, repurposed for defense.","Uncommon",20,"Melee");
 
-        Consumables healingPotion = new Consumables("Healing Potion","A glowing red potion that restores health when consumed.","Common",1,false);
+        Consumables healingPotion = new Consumables("Healing Potion","A glowing red potion that restores health when consumed.","Common",1);
 
-        Consumables positivityPotion = new Consumables("Positivity Potion","A potion that makes you more optimistic? It will increase your sanity.","Uncommon",2,false);
+        Consumables positivityPotion = new Consumables("Positivity Potion","A potion that makes you more optimistic? It will increase your sanity.","Uncommon",2);
 
-        Consumables myseriousPotion = new Consumables("A potion?","A glass bottle with no label on it.","Rare",1,true);
+        Consumables myseriousPotion = new Consumables("A potion?","A glass bottle with no label on it.","Rare",1);
 
         Inventory trophy = new Inventory("Trophy", "An award given to those who beat the haunted house", "One in a billion");
         
-        Inventory[] atticInventories = {unlockBedroom};
+        ArrayList<Inventory> atticInventories = new ArrayList<>();
+        atticInventories.add(unlockBedroom);
 
-        Inventory[] bedroomInventories = {unlockNursery, healingPotion};
+        ArrayList<Inventory> bedroomInventories = new ArrayList<>();
+        bedroomInventories.add(unlockNursery);
+        bedroomInventories.add(healingPotion);
 
-        Inventory[] nurseryInventories = {unlockBasement, pitchfork};
+        ArrayList<Inventory> nurseryInventories = new ArrayList<>();
+        nurseryInventories.add(unlockBasement);
+        nurseryInventories.add(pitchfork);
 
-        Inventory[] kitchenInventories = {knife, myseriousPotion};
+        ArrayList<Inventory> kitchenInventories = new ArrayList<>();
+        kitchenInventories.add(knife);
+        kitchenInventories.add(myseriousPotion);
 
-        Inventory[] livingroomInventories = {positivityPotion};
+        ArrayList<Inventory> livingroomInventories = new ArrayList<>();
+        livingroomInventories.add(positivityPotion);
 
-        Inventory[] bathroomInventories = {unlockAttic, ghostHunterGun}; 
+        ArrayList<Inventory> bathroomInventories = new ArrayList<>();
+        bathroomInventories.add(unlockAttic);
+        bathroomInventories.add(ghostHunterGun);
 
-        Inventory[] basementInventories = {trophy};
+        ArrayList<Inventory> basementInventories = new ArrayList<>();
+        basementInventories.add(trophy);
 
 
         
@@ -101,6 +114,11 @@ public class HauntedHouse {
         
         map[2][1] = null;
         map[2][2] = null;
+
+        map[0][0].setLocked(true, "Attic");
+        map[0][1].setLocked(true, "Bedroom");
+        map[0][2].setLocked(true, "Nursery");
+        map[2][0].setLocked(true, "Basement");
     }
 
     public Room getRoom(int row, int col) {
@@ -133,4 +151,6 @@ public class HauntedHouse {
             System.out.println(); // New line after each row
         }
     }
+
+    
 }

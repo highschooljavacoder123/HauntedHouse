@@ -1,9 +1,10 @@
+import java.util.ArrayList;
 public class Nursery extends Room {
     private boolean hasLullabyMusic;
     private boolean hasRockingChair;
     private int toyScatteringLevel; 
 
-    public Nursery(String name, String description, int darknessLevel, Monsters monsters, Inventory[] loot, boolean hasLullabyMusic, boolean hasRockingChair, int toyScatteringLevel) {
+    public Nursery(String name, String description, int darknessLevel, Monsters monsters, ArrayList<Inventory> loot, boolean hasLullabyMusic, boolean hasRockingChair, int toyScatteringLevel) {
         super(name, description, darknessLevel, monsters, loot);
         this.hasLullabyMusic = hasLullabyMusic;
         this.hasRockingChair = hasRockingChair;

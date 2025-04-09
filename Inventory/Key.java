@@ -8,6 +8,10 @@ public class Key extends Inventory {
         this.isUsed = false;
     }
 
+    public Key copy() {
+        return new Key(getName(), getDescription(), getRarity(), roomUnlock);
+    }
+
     public String getRoomName() {
         return roomUnlock;
     }

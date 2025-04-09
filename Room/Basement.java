@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 public class Basement extends Room {
     private boolean hasFlickeringLights;
     private int dampnessLevel; 
 
-    public Basement(String name, String description, int darknessLevel, Monsters monsters, Inventory[] loot, boolean hasFlickeringLights, int dampnessLevel) {
+    public Basement(String name, String description, int darknessLevel, Monsters monsters, ArrayList<Inventory> loot, boolean hasFlickeringLights, int dampnessLevel) {
         super(name, description, darknessLevel, monsters, loot);
         
         this.hasFlickeringLights = hasFlickeringLights;

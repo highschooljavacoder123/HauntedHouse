@@ -8,6 +8,10 @@ public class Weapons extends Inventory {
         this.combatType = combatType;
     }
 
+    public Weapons copy() {
+        return new Weapons(getName(), getDescription(), getRarity(), damage, combatType);
+    }
+
     public int getDamage() {
         return damage;
     }
@@ -34,6 +38,6 @@ public class Weapons extends Inventory {
 
     @Override
     public String toString() {
-        return getName() + " - " + getDescription() + " | Type: " + combatType + " | Damage: " + damage + " | Rarity: " + getRarity();
+        return super.toString() + " | Damage: " + damage + " | Combat Type: " + combatType;
     }
 }

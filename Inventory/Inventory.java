@@ -7,6 +7,13 @@ public class Inventory{
         this.description = description;
         this.rarity = rarity;
     }
+
+    public Inventory(Inventory other) {
+        this.name = other.name;
+        this.description = other.description;
+        this.rarity = other.rarity;
+    }
+
     public String getName(){
         return name;
     }
@@ -16,4 +23,20 @@ public class Inventory{
     public String getRarity(){
         return rarity;
     }
+
+    public void setName(String name){
+        this.name = name;
+    }
+    public void setDescription(String description){
+        this.description = description;
+    }
+    public void setRarity(String rarity){
+        this.rarity = rarity;
+    }
+    @Override
+    public String toString() {
+        return "Name: " + name + " | Description: " + description + " | Rarity: " + rarity;
+    }
+    
+    
 }

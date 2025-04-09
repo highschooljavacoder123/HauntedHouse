@@ -23,4 +23,24 @@ public class Healer extends User {
     public String getRole(){
         return "Healer";
     }
+
+    @Override
+    public String toString() {
+        String inventoryDisplay = "[";
+
+        if (getInventorySize() !=0) {
+            for (int i = 0; i<getInventorySize()-1; i++){
+                inventoryDisplay+= getInventory()[i] +", ";
+            }
+            inventoryDisplay+= getInventory()[getInventorySize()-1] +"]";
+        
+        }
+
+        else {
+            inventoryDisplay += "]";
+        }
+        
+
+        return "name='" + getName() + '\'' + "\nhealth=" + getHealth() + "\nsanity=" + getSanity() +"\nattack=" + getAttack() + "\nhealing=" +getHealingAbility()+ "\ninventory=" + inventoryDisplay;
+    }
 }

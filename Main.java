@@ -1,18 +1,15 @@
 import java.util.Scanner;
-public class Main {
-    public static void main(String[] args){
-        
-        User player = null;
 
+public class Main {
+    public static void main(String[] args) {
+
+        User player = null;
         int playerCol = 0;
         int playerRow = 1;
-
         Scanner thegame = new Scanner(System.in);
 
         System.out.println("Please enter your name");
         String name = thegame.nextLine();
-
-        
 
         boolean advance = false;
         while (!advance) {
@@ -21,110 +18,105 @@ public class Main {
 
             if (roleinput.toLowerCase().contains("psychic")) {
                 player = new Psychic(name, 250, 100, 5, 5, 5);
-                
                 advance = true;
-            }
-
-            else if (roleinput.toLowerCase().contains("ghosthunter") || roleinput.toLowerCase().contains("ghost hunter")) {
-                player = new Ghosthunter(name, 300, 100, 0, 0, 10);
-                
+            } else if (roleinput.toLowerCase().contains("ghosthunter") || roleinput.toLowerCase().contains("ghost hunter")) {
+                player = new Ghosthunter(name, 300, 100, 0, 5);
                 advance = true;
-            }
-
-            else if (roleinput.toLowerCase().contains("healer")) {
+            } else if (roleinput.toLowerCase().contains("healer")) {
                 player = new Healer(name, 200, 100, 5, 5, 5);
-                
                 advance = true;
-            }
-            else if (roleinput.toLowerCase().contains("skeptic")){
+            } else if (roleinput.toLowerCase().contains("skeptic")) {
                 player = new Skeptic(name, 250, 100, 5, 5, 5);
-                
                 advance = true;
-            }
-            else {
+            } else {
                 System.out.println("Invalid role");
-                advance = false;
             }
-
         }
 
         HauntedHouse hauntedhouse = new HauntedHouse();
 
-        System.out.println("Hello there " + player.getName() + ". You might be a "+player.getRole()+" but have you got the guts to survive?");
+        System.out.println("Hello there " + player.getName() + ". You might be a " + player.getRole() + " but have you got the guts to survive?");
         System.out.println();
-
+        System.out.println(player);
 
         boolean loss = false;
-        
+
         while (!loss) {
             hauntedhouse.printMapLayout();
-            System.out.println("You are currently at the "+ hauntedhouse.getRoom(playerRow, playerCol).getName());
+            System.out.println("You are currently at the " + hauntedhouse.getRoom(playerRow, playerCol).getName());
 
             System.out.println("Suddenly, a monster appears! It looks odd, what is that?");
-            try {
-                Thread.sleep(4000); 
-            } 
-            catch (InterruptedException e) {
-                e.printStackTrace(); 
-            }
+            hauntedhouse.getRoom(playerRow, playerCol).getMonsters().attack();
 
-            hauntedhouse.getRoom(playerRow,playerCol).getMonsters().attack();
-
-            
             boolean first = true;
             while (first) {
-                System.out.println("Do you want to search the room for tools? \n1: Yes \n2: No");
-                Integer interaction = thegame.nextInt();
-                if (interaction == 1) {
-                    System.out.println("You found some items in the room:"+ hauntedhouse.getRoom(playerRow,playerCol).displayInventory());
-                    
-                    
-                    boolean second = true;
-                    while (second) {
-                        System.out.println("Do you want to pick any of these items up? \n1: Yes \n2: No");
-                        Integer pickup1 = thegame.nextInt();
-                        if  (pickup1 == 1) {
-                            second = false;
-                        }
-                        else if (pickup1 == 2){
-                            second = false;
+                System.out.println("You found some items in the room:" + hauntedhouse.getRoom(playerRow, playerCol).displayInventory());
 
+                boolean second = true;
+                while (second) {
+                    System.out.println("Which item(s) do you want to pick up? \n0: Standard Knife \n1: A potion? \n2: Both \n3: Neither");
+                    int pickup1 = thegame.nextInt();
+
+                    if (pickup1 == 0 || pickup1 == 1) {
+                        Inventory original = hauntedhouse.getRoom(playerRow, playerCol).getSpecificInventory(pickup1);
+                        Inventory copy = copyInventoryItem(original);
+                        player.addItemToInventory(copy);
+                        hauntedhouse.getRoom(playerRow, playerCol).deleteSpecificInventory(pickup1);
+                        player.printInventory();
+                    } else if (pickup1 == 2) {
+                        for (int i = 0; i < 2; i++) {
+                            Inventory original = hauntedhouse.getRoom(playerRow, playerCol).getSpecificInventory(i);
+                            Inventory copy = copyInventoryItem(original);
+                            player.addItemToInventory(copy);
                         }
-                        else {
-                            System.out.println("Invalid input");
-                        }
+                        hauntedhouse.getRoom(playerRow, playerCol).clearInventory();
+                        player.printInventory();
+                    } else if (pickup1 == 3) {
+                        System.out.println("You chose not to pick up anything.");
+                    } else {
+                        System.out.println("Invalid input");
+                        continue;
                     }
-
-
-
-                    first = false;
+                    second = false;
                 }
-                else if (interaction == 2) {
-                    first = false;
-                }
-                else {
-                    System.out.println("Invalid input");
+                boolean moved = false;
+                thegame.nextLine(); // clear leftover newline if needed
+
+                while (!moved) {
+                    System.out.println("Which direction would you like to move? (up/down/left/right)");
+                    String direction = thegame.nextLine();
+                    int[] newPos = player.move(direction, playerRow, playerCol, hauntedhouse.getMap());
+
+                    // Only update if the player actually moved
+                    if (newPos[0] != playerRow || newPos[1] != playerCol) {
+                        playerRow = newPos[0];
+                        playerCol = newPos[1];
+                        moved = true;
+                    } else {
+                        System.out.println("You remain in the same room. Try a different direction.");
+                    }
                 }
             }
-
-            
-
-            
-
-
-
             loss = true;
         }
-        
-
 
         thegame.close();
+    }
 
-
-
-    
-        
-
-    
+    private static Inventory copyInventoryItem(Inventory original) {
+        if (original instanceof Weapons) {
+            Weapons w = (Weapons) original;
+            return new Weapons(w.getName(), w.getDescription(), w.getRarity(), w.getDamage(), w.getType());
+        } else if (original instanceof Consumables) {
+            Consumables c = (Consumables) original;
+            return new Consumables(c.getName(), c.getDescription(), c.getRarity(), c.getUsesRemaining());
+        } else if (original instanceof Key) {
+            Key k = (Key) original;
+            Key copy = new Key(k.getName(), k.getDescription(), k.getRarity(), k.getRoomName());
+            if (k.isUsed()) copy.useKey();
+            return copy;
+        } else {
+            return new Inventory(original.getName(), original.getDescription(), original.getRarity());
+        }
     }
 }

@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 public class LivingRoom extends Room {
     private boolean hasTV;
     private boolean furnitureMoved;
 
-    public LivingRoom(String name, String description, int darknessLevel, Monsters monsters, Inventory[] loot, boolean hasTV, boolean furnitureMoved) {
+    public LivingRoom(String name, String description, int darknessLevel, Monsters monsters, ArrayList<Inventory> loot, boolean hasTV, boolean furnitureMoved) {
         super(name, description, darknessLevel, monsters, loot);
         this.hasTV = hasTV;
         this.furnitureMoved = furnitureMoved;

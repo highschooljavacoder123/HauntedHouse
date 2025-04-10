@@ -8,7 +8,7 @@ public class HauntedHouse {
     }
 
     private void setupMap() {
-        Monsters inAttic = new Ghost("Ghost", "A mysterious white haunted cloth thats floating around", 25.0, 10, 20, false);
+        Monsters inAttic = new Ghost("Ghost", "A mysterious white haunted cloth thats floating around", 50.0, 0, 20, false);
 
         Monsters inBathroom = new Bats("Blood Thirsty Bats", "A group of bats on the ceiling", 1.0, 5, 0);
 
@@ -18,7 +18,7 @@ public class HauntedHouse {
 
         Monsters inKitchen = new Wazoski("Mike fricken Wazoski", "A green ball looking thing with one eye",1.0, 0, -10);
 
-        Monsters inLivingroom = new Joker("The Joker", "A crazy clown looking dude", 50.0, 25, 25, 2);
+        Monsters inLivingroom = new Joker("The Joker", "A crazy clown looking dude", 50.0, 25, 25, 6);
 
         Monsters inBasement = new Frankenstine("Frankenstine", "A big electrified monster", 100.0, 40, 0, 5);
 
@@ -30,17 +30,17 @@ public class HauntedHouse {
 
         Key unlockNursery = new Key("Nursery Key", "This unlocks the nursery", "Mythic", "nursery");
 
-        Weapons ghostHunterGun = new Weapons("Ghost Hunter Gun","A specialized firearm used for banishing ghosts.","Rare",30,"Ranged");
+        Weapons ghostHunterGun = new Weapons("Ghost Hunter Gun","A specialized firearm only used for banishing ghosts.","Rare",0,"Ranged");
         
-        Weapons knife = new Weapons("Standard Knife","A basic knife. Not fancy, but it gets the job done.","Common",10,"Melee");
+        Weapons knife = new Weapons("Standard Knife","A basic knife. Not fancy, but it gets the job done.","Common",25,"Melee");
 
-        Weapons pitchfork = new Weapons("Pitchfork","An old farming tool, repurposed for defense.","Uncommon",20,"Melee");
+        Weapons pitchfork = new Weapons("Pitchfork","An old farming tool, repurposed for defense.","Uncommon",40,"Melee");
 
-        Consumables healingPotion = new Consumables("Healing Potion","A glowing red potion that restores health when consumed.","Common",1);
+        Consumables healingPotion = new Consumables("Healing Potion","A glowing red potion that restores health when consumed.","Common",1, 0, 100);
 
-        Consumables positivityPotion = new Consumables("Positivity Potion","A potion that makes you more optimistic? It will increase your sanity.","Uncommon",2);
+        Consumables positivityPotion = new Consumables("Positivity Potion","A potion that makes you more optimistic? It will increase your sanity.","Uncommon",2, 100, 0);
 
-        Consumables myseriousPotion = new Consumables("A potion?","A glass bottle with no label on it.","Rare",1);
+        Consumables myseriousPotion = new Consumables("A potion?","A glass bottle with no label on it.","Rare",1, 0, -10);
 
         Inventory trophy = new Inventory("Trophy", "An award given to those who beat the haunted house", "One in a billion");
         

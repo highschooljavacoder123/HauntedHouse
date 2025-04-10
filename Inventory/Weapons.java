@@ -34,6 +34,7 @@ public class Weapons extends Inventory {
 
     public void useWeapon() {
         System.out.println(getName() + " is used! It deals " + damage + " " + combatType + " damage.");
+        
     }
 
     @Override

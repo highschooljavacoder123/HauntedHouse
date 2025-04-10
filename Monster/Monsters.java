@@ -26,6 +26,9 @@ public class Monsters {
    
 
     public double getHealth() {
+        if (health<0) {
+            return 0.0;
+        }
         return health;
     }
 
@@ -54,6 +57,9 @@ public class Monsters {
     
     public void takeDamage(double damage) {
         this.health -= damage;
+        if (this.health < 0){
+            this.health = 0;
+        }
         System.out.println(name + " takes " + damage + " damage! Health remaining: " + this.health);
         if (this.health <= 0) {
             System.out.println(name + " has been defeated!");

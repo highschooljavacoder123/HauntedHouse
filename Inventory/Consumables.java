@@ -1,20 +1,31 @@
 public class Consumables extends Inventory{
     private int usesRemaining; 
+    private int sanityIncrease;
+    private int healthIncrease;
+
     
     
-    public Consumables(String name, String description, String rarity, int usesRemaining){
+    public Consumables(String name, String description, String rarity, int usesRemaining, int sanityIncrease, int healthIncrease){
         super(name, description, rarity); 
         this.usesRemaining = usesRemaining; 
-         
+        this.sanityIncrease = sanityIncrease;
+        this.healthIncrease = healthIncrease;
     
     }
 
     public Consumables copy() {
-        return new Consumables(getName(), getDescription(), getRarity(), usesRemaining);
+        return new Consumables(getName(), getDescription(), getRarity(), usesRemaining,  sanityIncrease,  healthIncrease);
     }
     
     public int getUsesRemaining() {
         return usesRemaining;
+    }
+
+    public int getSanityIncrease(){
+        return sanityIncrease;
+    }
+    public int getHealthIncrease(){
+        return healthIncrease;
     }
     
     public void setuses(int x){
@@ -32,6 +43,8 @@ public class Consumables extends Inventory{
         if (usesRemaining > 0) {
             usesRemaining--;
             System.out.println("You used " + getName() + ". Uses remaining: " + usesRemaining);
+            System.out.println("The "+getName()+" increased your health by "+healthIncrease+" and increased your sanity by "+sanityIncrease);
+            
 
         } 
         else {

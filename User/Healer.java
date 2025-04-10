@@ -14,9 +14,9 @@ public class Healer extends User {
         this.healingAbility = healingAbility;
     }
 
-    public void heal(User target) {
-        System.out.println(getName() + " is healing " + target.getName() + " by " + healingAbility + " points.");
-        target.setHealth(target.getHealth() + healingAbility);
+    public void heal() {
+        System.out.println(getName() + " is healing by " +getHealingAbility() + "hp");
+        this.healingAbility+=10;
     }
 
     @Override

@@ -1,13 +1,13 @@
 public class User {
     private String name;
     private double health;
-    private int sanity;
+    private double sanity;
     private int attack;
     private Inventory[] inventory;
     private int inventorySize; 
     
 
-    public User(String name, double health, int sanity, int attack, int maxInventorySize) {
+    public User(String name, double health, double sanity, int attack, int maxInventorySize) {
         this.name = name;
         this.health = health;
         this.sanity = sanity;
@@ -29,11 +29,11 @@ public class User {
         this.health = health;
     }
 
-    public int getSanity() {
+    public double getSanity() {
         return sanity;
     }
 
-    public void setSanity(int sanity) {
+    public void setSanity(double sanity) {
         this.sanity = sanity;
     }
 

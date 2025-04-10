@@ -3,10 +3,10 @@ public class Monsters {
     protected String description;
 
     protected double health;
-    protected int sanitydealer;
+    protected double sanitydealer;
     protected int damagedealer;
 
-    public Monsters(String name, String description, double health, int damagedealer, int sanitydealer) {
+    public Monsters(String name, String description, double health, int damagedealer, double sanitydealer) {
         this.name = name;
         this.description = description;
         
@@ -35,7 +35,7 @@ public class Monsters {
     public int getDamagedealer(){
         return damagedealer;
     }
-    public int getSanitydealer(){
+    public double getSanitydealer(){
         return sanitydealer;
     }
 

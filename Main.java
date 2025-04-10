@@ -26,7 +26,7 @@ public class Main {
                 advance = true;
             } 
             else if (roleinput.toLowerCase().contains("skeptic")) {
-                player = new Skeptic(name, 250, 100, 5, 50, 5);
+                player = new Skeptic(name, 250, 100, 5, 50, 2);
                 advance = true;
             } 
             else {
@@ -83,10 +83,10 @@ public class Main {
     private static Inventory copyInventoryItem(Inventory original) {
         if (original instanceof Weapons) {
             Weapons w = (Weapons) original;
-            return new Weapons(w.getName(), w.getDescription(), w.getRarity(), w.getDamage(), w.getType());
+            return new Weapons(w.getName(), w.getDescription(), w.getRarity(), w.getDamage(), w.getType(), w.getUsesRemaining());
         } else if (original instanceof Consumables) {
             Consumables c = (Consumables) original;
-            return new Consumables(c.getName(), c.getDescription(), c.getRarity(), c.getUsesRemaining(), c.getSanityIncrease(), c.getHealthIncrease());
+            return new Consumables(c.getName(), c.getDescription(), c.getRarity(), c.getSanityIncrease(), c.getHealthIncrease(), c.getjustformystery1(), c.getjustformystery2());
         } else if (original instanceof Key) {
             Key k = (Key) original;
             Key copy = new Key(k.getName(), k.getDescription(), k.getRarity(), k.getRoomName());
@@ -137,7 +137,14 @@ public class Main {
                 player.setHealth(player.getHealth() - monster.getDamagedealer());
 
                 if (player instanceof Skeptic) {
-                    player.setSanity(player.getSanity() - monster.getSanitydealer()/2);
+                    if (monster.getSanitydealer() > 0){
+                        System.out.println("You resist their insanity and take "+monster.getSanitydealer()/2);
+                        player.setSanity(player.getSanity() - monster.getSanitydealer()/2);
+
+                    }
+                    else {
+                        player.setSanity(player.getSanity() - monster.getSanitydealer());
+                    }
                 }
                 else {
                     player.setSanity(player.getSanity()-monster.getSanitydealer());
@@ -193,8 +200,12 @@ public class Main {
                             }
                             weapon.setDamage(newDamage);
                             weapon.useWeapon();
+                            
                             monster.takeDamage(newDamage);
                             weapon.setDamage(originalDamage);
+                            if (weapon.getUsesRemaining() == 0){
+                                player.removeItemFromInventory(weapon);
+                            }
 
                             validAction = true;
                         } else {
@@ -212,6 +223,7 @@ public class Main {
                             player.setHealth(player.getHealth()+((Consumables) itemToUse).getHealthIncrease());
                             player.setSanity(player.getSanity()+((Consumables) itemToUse).getSanityIncrease());
                             System.out.println(player);
+                            player.removeItemFromInventory(itemToUse);
                             validAction = true;
                         } else {
                             System.out.println("That's not a usable consumable.");

@@ -6,7 +6,7 @@ public class Dracula extends Monsters {
 
     @Override
     public void attack() {
-        System.out.println(name + " talks about his life issues for an hour and drives you insane and does" + sanitydealer + " damage to your sanity!");
+        System.out.println(name + " talks about his life issues for an hour and drives you insane and does " + sanitydealer + " damage to your sanity!");
     }
 
     

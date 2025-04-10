@@ -30,17 +30,17 @@ public class HauntedHouse {
 
         Key unlockNursery = new Key("Nursery Key", "This unlocks the nursery", "Mythic", "nursery");
 
-        Weapons ghostHunterGun = new Weapons("Ghost Hunter Gun","A specialized firearm only used for banishing ghosts.","Rare",0,"Ranged");
+        Weapons ghostHunterGun = new Weapons("Ghost Hunter Gun","A specialized firearm only used for banishing ghosts.","Rare",0,"Ranged",4);
         
-        Weapons knife = new Weapons("Standard Knife","A basic knife. Not fancy, but it gets the job done.","Common",25,"Melee");
+        Weapons knife = new Weapons("Standard Knife","A basic knife. Not fancy, but it gets the job done.","Common",25,"Melee",5);
 
-        Weapons pitchfork = new Weapons("Pitchfork","An old farming tool, repurposed for defense.","Uncommon",40,"Melee");
+        Weapons pitchfork = new Weapons("Pitchfork","An old farming tool, repurposed for defense.","Uncommon",40,"Melee", 3);
 
-        Consumables healingPotion = new Consumables("Healing Potion","A glowing red potion that restores health when consumed.","Common",1, 0, 100);
+        Consumables healingPotion = new Consumables("Healing Potion","A glowing red potion that restores health when consumed.","Common", 0, 100, "0", "100");
 
-        Consumables positivityPotion = new Consumables("Positivity Potion","A potion that makes you more optimistic? It will increase your sanity.","Uncommon",2, 100, 0);
+        Consumables positivityPotion = new Consumables("Positivity Potion","A potion that makes you more optimistic? It will increase your sanity.","Uncommon", 100, 0, "100", "0");
 
-        Consumables myseriousPotion = new Consumables("A potion?","A glass bottle with no label on it.","Rare",1, 0, -10);
+        Consumables myseriousPotion = new Consumables("A potion?","A glass bottle with no label on it.","Rare", 0, -10,"?", "?");
 
         Inventory trophy = new Inventory("Trophy", "An award given to those who beat the haunted house", "One in a billion");
         

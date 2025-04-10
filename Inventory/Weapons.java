@@ -2,14 +2,16 @@ public class Weapons extends Inventory {
     private int damage;
     private String combatType; 
 
-    public Weapons(String name, String description, String rarity, int damage, String combatType) {
+    private int usesRemaining;
+    public Weapons(String name, String description, String rarity, int damage, String combatType, int usesRemaining) {
         super(name, description, rarity);
         this.damage = damage;
         this.combatType = combatType;
+        this.usesRemaining = usesRemaining;
     }
 
     public Weapons copy() {
-        return new Weapons(getName(), getDescription(), getRarity(), damage, combatType);
+        return new Weapons(getName(), getDescription(), getRarity(), damage, combatType, usesRemaining);
     }
 
     public int getDamage() {
@@ -31,14 +33,22 @@ public class Weapons extends Inventory {
     public void setType(String type) {
         this.combatType = type;
     }
+    public int getUsesRemaining(){
+        return usesRemaining;
+    }
 
     public void useWeapon() {
+        usesRemaining--;
         System.out.println(getName() + " is used! It deals " + damage + " " + combatType + " damage.");
+        
+
+        
+        
         
     }
 
     @Override
     public String toString() {
-        return super.toString() + " | Damage: " + damage + " | Combat Type: " + combatType;
+        return super.toString() + " | Damage: " + damage + " | Combat Type: " + combatType + " | Uses Remaining: "+ usesRemaining;
     }
 }

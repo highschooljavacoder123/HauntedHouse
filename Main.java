@@ -40,16 +40,24 @@ public class Main {
         System.out.println();
         System.out.println(player);
 
-        boolean loss = false;
+        boolean win = false;
 
-        while (!loss) {
+        while (!win) {
+            
             hauntedhouse.printMapLayout();
             
             Room currentRoom = hauntedhouse.getRoom(playerRow, playerCol);
+            
             System.out.println("You are currently at the " + currentRoom.getName());
+            pause(3000);
             handleRoomEvents(currentRoom, player, thegame);
             
-                    
+            if (currentRoom.isMonsterDefeated() && currentRoom.getName().equals("Dark Basement") ) {
+                System.out.println("Congratulations, you have won the game");
+                System.out.println("You are really tougher than you look");
+                win = true;
+                break;
+            }        
             
                     
                 
@@ -113,9 +121,10 @@ public class Main {
         Monsters monster = room.getMonsters();
     
         if (!room.isMonsterDefeated()) {
-            System.out.println("You see " + monster.getDescription() + ". Wait, is that " + monster.getName() + "!");
-    
-            
+            System.out.println("You see " + monster.getDescription());
+            pause(2000);
+            System.out.println("Wait, is that " + monster.getName() + "!");
+            pause(5000);
     
             boolean playerAlive = true;
             boolean monsterAlive = true;
@@ -124,6 +133,7 @@ public class Main {
     
                 // Monster attacks first
                 System.out.println("\n" + monster.getName() + "'s turn!");
+                pause(2000);
                 if (monster instanceof Joker) {
                     ((Joker) monster).laugh();
                     ((Joker) monster).trickMove();
@@ -138,6 +148,7 @@ public class Main {
 
                 if (player instanceof Skeptic) {
                     if (monster.getSanitydealer() > 0){
+                        pause(1000);
                         System.out.println("You resist their insanity and take "+monster.getSanitydealer()/2);
                         player.setSanity(player.getSanity() - monster.getSanitydealer()/2);
 
@@ -150,7 +161,7 @@ public class Main {
                     player.setSanity(player.getSanity()-monster.getSanitydealer());
                 }
                 
-    
+                pause(1000);
                 System.out.println("Your health: " + player.getHealth());
                 System.out.println("Your sanity: " + player.getSanity());
     
@@ -186,6 +197,7 @@ public class Main {
                             // Bonus if it's a Ghost Hunter Gun used against a Ghost
                             if (weapon.getName().toLowerCase().contains("ghost hunter gun") && monster instanceof Ghost && player instanceof Ghosthunter) {
                                 newDamage += 50; // You can tweak this bonus value
+                                
                                 System.out.println("The Ghost Hunter Gun glows brightly! Being a ghost hunter does double damage!");
                             }
                             else if (weapon.getName().toLowerCase().contains("ghost hunter gun") && monster instanceof Ghost) {
@@ -200,7 +212,7 @@ public class Main {
                             }
                             weapon.setDamage(newDamage);
                             weapon.useWeapon();
-                            
+                            pause(1000);
                             monster.takeDamage(newDamage);
                             weapon.setDamage(originalDamage);
                             if (weapon.getUsesRemaining() == 0){
@@ -271,12 +283,15 @@ public class Main {
             if (playerAlive && !monsterAlive) {
                 room.setMonsterDefeated();
                 System.out.println("\nYou found some items in the room: " + room.displayInventory());
+                
                 for (int i = 0; i < room.getInventory().size(); i++) {
                     Inventory original = room.getSpecificInventory(i);
                     Inventory copy = copyInventoryItem(original);
                     player.addItemToInventory(copy);
                 }
                 room.clearInventory();
+                System.out.println();
+                System.out.println(player);
             }
         }
     }

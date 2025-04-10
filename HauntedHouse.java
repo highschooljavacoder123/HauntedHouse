@@ -91,7 +91,7 @@ public class HauntedHouse {
 
         map[1][1] = new LivingRoom(
             "Disturbed Living Room",
-            "Furniture is overturned, and the TV flickers static on repeat.",
+            "The Furniture is overturned, and the TV flickers static on repeat.",
             5,
             inLivingroom,
             livingroomInventories,

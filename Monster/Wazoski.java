@@ -7,6 +7,8 @@ public class Wazoski extends Monsters{
     @Override
     public void attack() {
         System.out.println(name + " tries to scare you but instead makes you laugh, increasing your sanity by " + -sanitydealer);
+        
+        
     }
 
 }

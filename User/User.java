@@ -85,6 +85,15 @@ public class User {
         System.out.println("Item not found in inventory!");
     }
 
+    public Inventory getItemByName(String name) {
+        for (Inventory item : this.getInventory()) {
+            if (item != null && item.getName().equalsIgnoreCase(name)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
 
     public String getRole(){
         return "";

@@ -33,6 +33,7 @@ public class Inventory{
     public void setRarity(String rarity){
         this.rarity = rarity;
     }
+    
     @Override
     public String toString() {
         return "Name: " + name + " | Description: " + description + " | Rarity: " + rarity;

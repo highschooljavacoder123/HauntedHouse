@@ -30,7 +30,7 @@ public class HauntedHouse {
 
         Key unlockNursery = new Key("Nursery Key", "This unlocks the nursery", "Mythic", "nursery");
 
-        Weapons ghostHunterGun = new Weapons("Ghost Hunter Gun","A specialized firearm only used for banishing ghosts.","Rare",0,"Ranged",4);
+        Weapons ghostHunterGun = new Weapons("Ghost Hunter Gun","A specialized firearm only used for banishing ghosts.","Rare",25,"Ranged",4);
         
         Weapons knife = new Weapons("Standard Knife","A basic knife. Not fancy, but it gets the job done.","Common",25,"Melee",5);
 

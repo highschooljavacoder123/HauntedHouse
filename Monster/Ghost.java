@@ -20,7 +20,9 @@ public class Ghost extends Monsters {
     }
 
     public void phaseShift() {
-        System.out.println(name + " becomes intangible, avoiding all attacks for one turn!");
+        if (!isDetectible()){
+            System.out.println(name + " becomes intangible, avoiding all melee attacks for one turn!");
+        }
     }
 
     @Override

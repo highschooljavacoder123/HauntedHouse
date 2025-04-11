@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
+        HauntedHouse hauntedhouse = new HauntedHouse();
         User player = null;
         int playerCol = 0;
         int playerRow = 1;
@@ -19,6 +19,7 @@ public class Main {
             
             if (roleinput.toLowerCase().contains("ghosthunter") || roleinput.toLowerCase().contains("ghost hunter")) {
                 player = new Ghosthunter(name, 300, 100, 0, 50);
+
                 advance = true;
             } 
             else if (roleinput.toLowerCase().contains("healer")) {
@@ -34,7 +35,9 @@ public class Main {
             }
         }
 
-        HauntedHouse hauntedhouse = new HauntedHouse();
+        
+
+
 
         System.out.println("Hello there " + player.getName() + ". You might be a " + player.getRole() + " but have you got the guts to survive?");
         System.out.println();
@@ -138,11 +141,14 @@ public class Main {
                     ((Joker) monster).laugh();
                     ((Joker) monster).trickMove();
                 } else if (monster instanceof Ghost) {
+                    if (player instanceof Ghosthunter){
+                        ((Ghost) monster).setDetectible(true);
+                    }
                     ((Ghost) monster).phaseShift();
                 } else if (monster instanceof Frankenstine) {
                     ((Frankenstine) monster).shockwave();
                 }
-    
+                System.out.println(monster.getName() + "'s health " + monster.getHealth());
                 monster.attack();
                 player.setHealth(player.getHealth() - monster.getDamagedealer());
 
@@ -165,7 +171,7 @@ public class Main {
                 System.out.println("Your health: " + player.getHealth());
                 System.out.println("Your sanity: " + player.getSanity());
     
-                if (player.getHealth() <= 0) {
+                if (player.getHealth() <= 0 || player.getSanity() <=0) {
                     System.out.println("You have been defeated... The house claims another soul.");
                     playerAlive = false;
                     break;
@@ -195,13 +201,17 @@ public class Main {
                             int newDamage = weapon.getDamage();
 
                             // Bonus if it's a Ghost Hunter Gun used against a Ghost
+                            if (weapon.getName().toLowerCase().contains("ghost hunter gun") && !(monster instanceof Ghost)) {
+                                System.out.println("Your ghost hunter gun glows brightly, but is ineffective against "+monster.getName());
+                                newDamage = 0;
+                            }
                             if (weapon.getName().toLowerCase().contains("ghost hunter gun") && monster instanceof Ghost && player instanceof Ghosthunter) {
-                                newDamage += 50; // You can tweak this bonus value
+                                newDamage += 25; // You can tweak this bonus value
                                 
                                 System.out.println("The Ghost Hunter Gun glows brightly! Being a ghost hunter does double damage!");
                             }
                             else if (weapon.getName().toLowerCase().contains("ghost hunter gun") && monster instanceof Ghost) {
-                                newDamage += 25;
+                                newDamage += 0;
                                 System.out.println("The Ghost Hunter Gun glows brightly!");
                             }
 

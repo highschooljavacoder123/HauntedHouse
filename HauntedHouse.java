@@ -79,35 +79,11 @@ public class HauntedHouse {
 
         map[0][2] = new Nursery("Ghostly Nursery","Faded wallpaper peels behind a dusty crib and scattered toys.",6,inNursery, nurseryInventories, true,true,8);
 
-        map[1][2] = new Bathroom(
-            "Dripping Bathroom",
-            "The mirror is fogged despite the cold air. Water drips rhythmically.",
-            4,
-            inBathroom,
-            bathroomInventories,
-            true,  
-            7       
-        );
+        map[1][2] = new Bathroom("Dripping Bathroom","The mirror is fogged despite the cold air. Water drips rhythmically.",4,inBathroom,bathroomInventories,true,  7);
 
-        map[1][1] = new LivingRoom(
-            "Disturbed Living Room",
-            "The Furniture is overturned, and the TV flickers static on repeat.",
-            5,
-            inLivingroom,
-            livingroomInventories,
-            true,   
-            true   
-        );
+        map[1][1] = new LivingRoom("Disturbed Living Room","The Furniture is overturned, and the TV flickers static on repeat.",5,inLivingroom,livingroomInventories,true,   true);
 
-        map[1][0] = new Kitchen(
-            "Greasy Kitchen",
-            "Everything is coated in a layer of grime, knives lay scattered.",
-            6,
-            inKitchen,
-            kitchenInventories,
-            true,  
-            8       
-        );
+        map[1][0] = new Kitchen("Greasy Kitchen","Everything is coated in a layer of grime, knives lay scattered.",6,inKitchen,kitchenInventories,true,8);
 
         map[2][0] = new Basement("Dark Basement","Wet stone walls and flickering lights create a foreboding atmosphere.",9,inBasement,basementInventories,true, 10);
 
@@ -134,21 +110,21 @@ public class HauntedHouse {
 
 
     public void printMapLayout() {
-        int cellWidth = 25; // Width of each cell including brackets
+        int cellWidth = 30;
     
         for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[0].length; j++) {
-                String content;
-                if (map[i][j] != null) {
-                    content = "[" + map[i][j].getName() + "]";
-                } else {
-                    content = "[Empty]";
+            for (int j = 0; j < map[i].length; j++) {
+                String name = (map[i][j] != null) ? map[i][j].getName() : "Empty";
+                String content = "[" + name + "]";
+    
+                
+                while (content.length() < cellWidth) {
+                    content += " ";
                 }
     
-                // Make sure each cell is exactly `cellWidth` characters wide
-                System.out.print(String.format("%-" + cellWidth + "s", content));
+                System.out.print(content);
             }
-            System.out.println(); // New line after each row
+            System.out.println(); 
         }
     }
 

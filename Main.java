@@ -93,15 +93,15 @@ public class Main {
 
     private static Inventory copyInventoryItem(Inventory original) {
         if (original instanceof Weapons) {
-            Weapons w = (Weapons) original;
-            return new Weapons(w.getName(), w.getDescription(), w.getRarity(), w.getDamage(), w.getType(), w.getUsesRemaining());
+            Weapons weapon = (Weapons) original;
+            return new Weapons(weapon.getName(), weapon.getDescription(), weapon.getRarity(), weapon.getDamage(), weapon.getType(), weapon.getUsesRemaining());
         } else if (original instanceof Consumables) {
-            Consumables c = (Consumables) original;
-            return new Consumables(c.getName(), c.getDescription(), c.getRarity(), c.getSanityIncrease(), c.getHealthIncrease(), c.getjustformystery1(), c.getjustformystery2());
+            Consumables consumable = (Consumables) original;
+            return new Consumables(consumable.getName(), consumable.getDescription(), consumable.getRarity(), consumable.getSanityIncrease(), consumable.getHealthIncrease(), consumable.getjustformystery1(), consumable.getjustformystery2());
         } else if (original instanceof Key) {
-            Key k = (Key) original;
-            Key copy = new Key(k.getName(), k.getDescription(), k.getRarity(), k.getRoomName());
-            if (k.isUsed()) copy.useKey();
+            Key key = (Key) original;
+            Key copy = new Key(key.getName(), key.getDescription(), key.getRarity(), key.getRoomName());
+            if (key.isUsed()) copy.useKey();
             return copy;
         } else {
             return new Inventory(original.getName(), original.getDescription(), original.getRarity());

@@ -131,7 +131,7 @@ public class User {
             String requiredKey = nextRoom.getRequiredKeyName();
             boolean hasKey = false;
     
-            for (Inventory item : this.getInventory()) {
+            for (Inventory item : getInventory()) {
                 if (item instanceof Key) {
                     Key key = (Key) item;
                     if (!key.isUsed() && key.getRoomName().equalsIgnoreCase(requiredKey)) {

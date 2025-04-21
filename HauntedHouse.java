@@ -108,6 +108,7 @@ public class HauntedHouse {
         return map;
     }
 
+    
 
     public void printMapLayout() {
         int cellWidth = 30;

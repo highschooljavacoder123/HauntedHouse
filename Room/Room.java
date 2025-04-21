@@ -19,7 +19,6 @@ public class Room {
         this.loot = loot;
         this.isMonsterDefeated = false;
     }
-
     public String getName() {
         return name; 
     }

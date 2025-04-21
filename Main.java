@@ -1,6 +1,19 @@
 import java.util.Scanner;
 
 public class Main {
+    public static final String GREEN = "\u001B[32m";
+    public static final String RESET = "\u001B[0m";
+    public static final String RED = "\u001B[31m";
+    public static final String J = "\u001B[0m";
+
+    public static void printGreen(String message) {
+        System.out.println(GREEN + message + RESET);
+    }
+
+    public static void printRed(String msg) {
+        System.out.println(RED + msg + J);
+    }
+
     public static void main(String[] args) {
         HauntedHouse hauntedhouse = new HauntedHouse();
         User player = null;
@@ -8,12 +21,12 @@ public class Main {
         int playerRow = 1;
         Scanner thegame = new Scanner(System.in);
 
-        System.out.println("Please enter your name");
+        printGreen("Please enter your name");
         String name = thegame.nextLine();
 
         boolean advance = false;
         while (!advance) {
-            System.out.println("Pick a role to play: Ghost Hunter, Skeptic, or Healer");
+            printGreen("Pick a role to play: Ghost Hunter, Skeptic, or Healer");
             String roleinput = thegame.nextLine();
 
             
@@ -39,7 +52,7 @@ public class Main {
 
 
 
-        System.out.println("Hello there " + player.getName() + ". You might be a " + player.getRole() + " but have you got the guts to survive?");
+        printGreen("Hello there " + player.getName() + ". You might be a " + player.getRole() + " but have you got the guts to survive?");
         System.out.println();
         System.out.println(player);
 
@@ -47,17 +60,15 @@ public class Main {
 
         while (!win) {
             
-            hauntedhouse.printMapLayout();
-            
             Room currentRoom = hauntedhouse.getRoom(playerRow, playerCol);
             
-            System.out.println("You are currently at the " + currentRoom.getName());
+            printGreen("You are currently at the " + currentRoom.getName());
             pause(3000);
             handleRoomEvents(currentRoom, player, thegame);
             
             if (currentRoom.isMonsterDefeated() && currentRoom.getName().equals("Dark Basement") ) {
-                System.out.println("Congratulations, you have won the game");
-                System.out.println("You are really tougher than you look");
+                printGreen("Congratulations, you have won the game");
+                printGreen("You are really tougher than you look");
                 win = true;
                 break;
             }        
@@ -68,7 +79,8 @@ public class Main {
             System.out.println();
 
             while (!moved) {
-                System.out.println("Which direction would you like to move? (up/down/left/right)");
+                hauntedhouse.printMapLayout();
+                printGreen("Which direction would you like to move? (up/down/left/right)");
                 String direction = thegame.nextLine();
                 int[] newPos = player.move(direction, playerRow, playerCol, hauntedhouse.getMap());
 
@@ -78,7 +90,7 @@ public class Main {
                     playerCol = newPos[1];
                     moved = true;
                 } else {
-                    System.out.println("You remain in the same room. Try a different direction.");
+                    printRed("You remain in the same room. Try a different direction.");
                 }
             }
             
@@ -124,9 +136,9 @@ public class Main {
         Monsters monster = room.getMonsters();
     
         if (!room.isMonsterDefeated()) {
-            System.out.println("You see " + monster.getDescription());
+            printGreen("You see " + monster.getDescription());
             pause(2000);
-            System.out.println("Wait, is that " + monster.getName() + "!");
+            printRed("Wait, is that " + monster.getName() + "!");
             pause(5000);
     
             boolean playerAlive = true;
@@ -148,14 +160,14 @@ public class Main {
                 } else if (monster instanceof Frankenstine) {
                     ((Frankenstine) monster).shockwave();
                 }
-                System.out.println(monster.getName() + "'s health " + monster.getHealth());
+                printGreen(monster.getName() + "'s health " + monster.getHealth());
                 monster.attack();
                 player.setHealth(player.getHealth() - monster.getDamagedealer());
 
                 if (player instanceof Skeptic) {
                     if (monster.getSanitydealer() > 0){
                         pause(1000);
-                        System.out.println("You resist their insanity and take "+monster.getSanitydealer()/2);
+                        printGreen("You resist their insanity and take "+monster.getSanitydealer()/2);
                         player.setSanity(player.getSanity() - monster.getSanitydealer()/2);
 
                     }
@@ -202,7 +214,7 @@ public class Main {
 
                             // Bonus if it's a Ghost Hunter Gun used against a Ghost
                             if (weapon.getName().toLowerCase().contains("ghost hunter gun") && !(monster instanceof Ghost)) {
-                                System.out.println("Your ghost hunter gun glows brightly, but is ineffective against "+monster.getName());
+                                printRed("Your ghost hunter gun glows brightly, but is ineffective against "+monster.getName());
                                 newDamage = 0;
                             }
                             if (weapon.getName().toLowerCase().contains("ghost hunter gun") && monster instanceof Ghost && player instanceof Ghosthunter) {
@@ -212,7 +224,7 @@ public class Main {
                             }
                             else if (weapon.getName().toLowerCase().contains("ghost hunter gun") && monster instanceof Ghost) {
                                 newDamage += 0;
-                                System.out.println("The Ghost Hunter Gun glows brightly!");
+                                printGreen("The Ghost Hunter Gun glows brightly!");
                             }
 
                             
@@ -236,7 +248,7 @@ public class Main {
     
                     } else if (action.equals("2")) {
                         player.printInventory();
-                        System.out.println("Enter the name of the consumable:");
+                        printGreen("Enter the name of the consumable:");
                         String consumableName = input.nextLine();
                         Inventory itemToUse = player.getItemByName(consumableName);
     
@@ -252,7 +264,7 @@ public class Main {
                         }
     
                     } else if (action.equals("3")) {
-                        System.out.println("You throw a punch!");
+                        printGreen("You throw a punch!");
                         int punchDamage = 5;
 
                         if (!(monster instanceof Ghost)){
@@ -281,7 +293,7 @@ public class Main {
                 }
     
                 if (monster.getHealth() <= 0) {
-                    System.out.println(monster.getName() + " has been defeated!");
+                    printGreen(monster.getName() + " has been defeated!");
                     monsterAlive = false;
                     if (player instanceof Healer) {
                         ((Healer)player).heal();
@@ -292,7 +304,7 @@ public class Main {
     
             if (playerAlive && !monsterAlive) {
                 room.setMonsterDefeated();
-                System.out.println("\nYou found some items in the room: " + room.displayInventory());
+                printGreen("\nYou found some items in the room: " + room.displayInventory());
                 
                 for (int i = 0; i < room.getInventory().size(); i++) {
                     Inventory original = room.getSpecificInventory(i);

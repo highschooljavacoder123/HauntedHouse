@@ -79,7 +79,7 @@ public class Main {
             System.out.println();
 
             while (!moved) {
-                hauntedhouse.printMapLayout();
+                hauntedhouse.printMapLayout(playerRow, playerCol);
                 printGreen("Which direction would you like to move? (up/down/left/right)");
                 String direction = thegame.nextLine();
                 int[] newPos = player.move(direction, playerRow, playerCol, hauntedhouse.getMap());

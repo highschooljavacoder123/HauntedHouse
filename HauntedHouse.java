@@ -110,13 +110,18 @@ public class HauntedHouse {
 
     
 
-    public void printMapLayout() {
+    public void printMapLayout(int currentRow, int currentCol) {
         int cellWidth = 30;
     
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 String name = (map[i][j] != null) ? map[i][j].getName() : "Empty";
                 String content = "[" + name + "]";
+
+                if(i == currentRow && j == currentCol){
+                    content = Main.GREEN + content + Main.RESET;
+
+                }
     
                 
                 while (content.length() < cellWidth) {

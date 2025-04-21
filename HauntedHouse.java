@@ -118,6 +118,8 @@ public class HauntedHouse {
                 String name = (map[i][j] != null) ? map[i][j].getName() : "Empty";
                 String content = "[" + name + "]";
 
+                //if condition below checks if the player is at that position; only then it highlights green
+
                 if(i == currentRow && j == currentCol){
                     content = Main.GREEN + content + Main.RESET;
 

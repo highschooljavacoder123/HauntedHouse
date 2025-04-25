@@ -36,7 +36,7 @@ public class Inventory{
     
     @Override
     public String toString() {
-        return "Name: " + name + " | Description: " + description + " | Rarity: " + rarity;
+        return "Name: " + name + " | Rarity: " + rarity;
     }
     
     

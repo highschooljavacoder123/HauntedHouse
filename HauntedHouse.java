@@ -73,19 +73,19 @@ public class HauntedHouse {
         
         map = new Room[3][3];
 
-        map[0][0] = new Attic("Creaky Attic","Dust dances in shafts of light piercing through broken boards.",7,inAttic, atticInventories, true,  true,  9);
+        map[0][0] = new Room("Creaky Attic","Dust dances in shafts of light piercing through broken boards.",7,inAttic, atticInventories);
 
-        map[0][1] = new Bedroom("Old Bedroom","A canopy bed covered in moldy drapes dominates the room.",5,inBedroom, bedroomInventories, true,false);
+        map[0][1] = new Room("Old Bedroom","A canopy bed covered in moldy drapes dominates the room.",5,inBedroom, bedroomInventories);
 
-        map[0][2] = new Nursery("Ghostly Nursery","Faded wallpaper peels behind a dusty crib and scattered toys.",6,inNursery, nurseryInventories, true,true,8);
+        map[0][2] = new Room("Ghostly Nursery","Faded wallpaper peels behind a dusty crib and scattered toys.",6,inNursery, nurseryInventories);
 
-        map[1][2] = new Bathroom("Dripping Bathroom","The mirror is fogged despite the cold air. Water drips rhythmically.",4,inBathroom,bathroomInventories,true,  7);
+        map[1][2] = new Room("Dripping Bathroom","The mirror is fogged despite the cold air. Water drips rhythmically.",4,inBathroom,bathroomInventories);
 
-        map[1][1] = new LivingRoom("Disturbed Living Room","The Furniture is overturned, and the TV flickers static on repeat.",5,inLivingroom,livingroomInventories,true,   true);
+        map[1][1] = new Room("Disturbed Living Room","The Furniture is overturned, and the TV flickers static on repeat.",5,inLivingroom,livingroomInventories);
 
-        map[1][0] = new Kitchen("Greasy Kitchen","Everything is coated in a layer of grime, knives lay scattered.",6,inKitchen,kitchenInventories,true,8);
+        map[1][0] = new Room("Greasy Kitchen","Everything is coated in a layer of grime, knives lay scattered.",6,inKitchen,kitchenInventories);
 
-        map[2][0] = new Basement("Dark Basement","Wet stone walls and flickering lights create a foreboding atmosphere.",9,inBasement,basementInventories,true, 10);
+        map[2][0] = new Room("Dark Basement","Wet stone walls and flickering lights create a foreboding atmosphere.",9,inBasement,basementInventories);
 
         
         map[2][1] = null;

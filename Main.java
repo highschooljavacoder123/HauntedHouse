@@ -5,6 +5,12 @@ public class Main {
     public static final String RESET = "\u001B[0m";
     public static final String RED = "\u001B[31m";
     public static final String J = "\u001B[0m";
+    public static final String BLUE = "\u001B[34m";
+    public static final String ANSI_RESET = "\u001B[0m";
+
+    public static void printBlue(String x){
+        System.out.println(BLUE + x + ANSI_RESET);
+    }
 
     public static void printGreen(String message) {
         System.out.println(GREEN + message + RESET);

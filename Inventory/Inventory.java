@@ -1,4 +1,6 @@
 public class Inventory{
+    public static final String BLUE = "\u001B[34m";
+    public static final String ANSI_RESET = "\u001B[0m";
     private String name;
     private String description;
     private String rarity;
@@ -12,6 +14,9 @@ public class Inventory{
         this.name = other.name;
         this.description = other.description;
         this.rarity = other.rarity;
+    }
+    public static void printBlue(String x){
+        System.out.println(BLUE + x + ANSI_RESET);
     }
 
     public String getName(){
@@ -36,7 +41,7 @@ public class Inventory{
     
     @Override
     public String toString() {
-        return "Name: " + name + " | Rarity: " + rarity;
+        return "Name: " + BLUE + name + ANSI_RESET + " | Rarity: " + rarity;
     }
     
     

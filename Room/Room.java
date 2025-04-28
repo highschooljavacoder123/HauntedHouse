@@ -5,7 +5,7 @@ public class Room {
     private String description; 
     private int darknessLevel; 
     private Monsters monsters; 
-    private ArrayList<Inventory> loot;  // changed from Inventory[] to ArrayList
+    private ArrayList<Inventory> loot;  
     private boolean isLocked = false;
     private String requiredKeyName = "";
     private boolean isMonsterDefeated;
